@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Data;
@@ -17,24 +18,25 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public async Task AddPerson(Person personDto)
+        public async Task AddPerson(Person person)
         {
-            var person = new Person()
-            {
-                FirstName = personDto.FirstName,
-                LastName = personDto.LastName
-            };
-
             await _peopleRepository.InsertOneAsync(person);
+
+            var x = await _peopleRepository.FindByIdAsync(person.Id);
         }
 
         [HttpGet]
-        public IEnumerable<string> Get(string lastName)
+        public async Task<IEnumerable<Person>> Get(string lastName)
         {
-            var people = _peopleRepository.FilterBy(
-                filter => filter.FirstName == lastName,
-                projection => projection.FirstName
-            );
+            //var people = _peopleRepository.FilterBy(
+            //    filter => filter.FirstName == lastName,
+            //    projection => projection.FirstName
+            //);
+
+            var x = await _peopleRepository.FindByIdAsync(new System.Guid("bd619420-3ce3-4a49-a89c-b67320730cbd"));
+
+            var people = _peopleRepository.AsQueryable().ToList();
+
             return people;
         }
     }

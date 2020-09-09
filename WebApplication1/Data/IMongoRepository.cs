@@ -21,9 +21,9 @@ namespace WebApplication1.Data
 
         Task<TDocument> FindOneAsync(Expression<Func<TDocument, bool>> filterExpression);
 
-        TDocument FindById(string id);
+        TDocument FindById(Guid id);
 
-        Task<TDocument> FindByIdAsync(string id);
+        Task<TDocument> FindByIdAsync(Guid id);
 
         void InsertOne(TDocument document);
 
@@ -41,9 +41,9 @@ namespace WebApplication1.Data
 
         Task DeleteOneAsync(Expression<Func<TDocument, bool>> filterExpression);
 
-        void DeleteById(string id);
+        void DeleteById(Guid id);
 
-        Task DeleteByIdAsync(string id);
+        Task DeleteByIdAsync(Guid id);
 
         void DeleteMany(Expression<Func<TDocument, bool>> filterExpression);
 

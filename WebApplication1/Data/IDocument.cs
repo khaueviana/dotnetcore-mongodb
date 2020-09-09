@@ -7,9 +7,9 @@ namespace WebApplication1.Data
     public interface IDocument
     {
         [BsonId]
-        [BsonRepresentation(BsonType.String)]
-        ObjectId Id { get; set; }
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
+        Guid Id { get; set; }
 
-        DateTime CreatedAt { get; }
+        DateTime CreatedAt { get; set; }
     }
 }

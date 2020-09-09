@@ -5,8 +5,8 @@ namespace WebApplication1.Data
 {
     public abstract class Document : IDocument
     {
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; }
 
-        public DateTime CreatedAt => Id.CreationTime;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

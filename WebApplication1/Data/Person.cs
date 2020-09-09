@@ -7,6 +7,7 @@ namespace WebApplication1.Data
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public PersonType Type { get; set; }
         public DateTime BirthDate { get; set; }
     }
 }
